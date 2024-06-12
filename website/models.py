@@ -1,11 +1,12 @@
 from . import db
-from flask_login import UserMixin
+from flask_login import UserMixin # Import UserMixin to add user session methods to the User model
 from sqlalchemy.sql import func
 
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     data = db.Column(db.String(10000))
-    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    # Column to store the date and time the note was created, defaulting to the current time
+    date = db.Column(db.DateTime(timezone=True), default=func.now()) 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class User(db.Model, UserMixin):

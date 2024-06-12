@@ -24,13 +24,13 @@ def home():
 
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
-    note = json.loads(request.data)
-    noteId = note['noteId']
-    note = Note.query.get(noteId)
+    note = json.loads(request.data)  # Load the JSON data from the request
+    noteId = note['noteId']  # Get the note ID from the JSON data
+    note = Note.query.get(noteId)  # Query the database for the note with the given ID
     if note:
-        if note.user_id == current_user.id:
-            db.session.delete(note)
-            db.session.commit()
+        if note.user_id == current_user.id:  # Check if the current user owns the note
+            db.session.delete(note)  # Delete the note from the database session
+            db.session.commit()  # Commit the session to remove the note from the database
             
-    return jsonify({})
+    return jsonify({})  # Return an empty JSON response
 
