@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {%  block content %}
-<h1 align="center">Notes</h1>
+<h3 align="center">NoteNook</h3>
 <ul class="list-group list-group-flush" id="notes">
     {% for note in user.notes %}
     <li class="list-group-item">
@@ -14,11 +14,12 @@
     </li>
     {% endfor %}
 </ul>
+<br>
 <form method="POST">
     <textarea name="note" id="note" class="form-control"></textarea>
     <br>
     <div align="center">
-        <button type="'submit" class="'btn btn-primary">Add note</button>
+        <button type="submit" class="btn btn-primary">Add note</button>
     </div>
 </form>
 {%  endblock %}
